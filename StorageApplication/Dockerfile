@@ -6,14 +6,13 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["StorageApplication/StorageApplication.csproj", "StorageApplication/"]
-RUN dotnet restore "StorageApplication/StorageApplication.csproj"
+COPY ["StorageApplication.csproj", "./"]
+RUN dotnet restore "StorageApplication.csproj"
 COPY . .
-WORKDIR "/src/StorageApplication"
+WORKDIR "/src/."
 RUN dotnet build "StorageApplication.csproj" -c Release -o /app/build
 
 FROM build AS publish
