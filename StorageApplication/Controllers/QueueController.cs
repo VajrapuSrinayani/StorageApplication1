@@ -41,12 +41,6 @@ namespace StorageApplication.Controllers
             return Ok(message);
         }
 
-        [HttpGet("DequeueMessage")]
-        public async Task<QueueMessage> DequeueMessage()
-        {
-            return await queueRepository.DequeueMessageAsync();
-        }
-
         [HttpPut("UpdateMessage")]
         public async Task UpdateMessage(QueueMessage message)
         {

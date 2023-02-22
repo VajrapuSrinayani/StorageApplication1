@@ -55,20 +55,6 @@ namespace StorageApplication.Repository
             return message;
         }
 
-        public async Task<QueueMessage> DequeueMessageAsync()
-        {
-            QueueMessage message = null;
-            var receivedMessage = await queueClient.ReceiveMessageAsync();
-
-            if (receivedMessage != null)
-            {
-                message = JsonConvert.DeserializeObject<QueueMessage>(receivedMessage.Value.MessageText);
-                await queueClient.DeleteMessageAsync(receivedMessage.Value.MessageId, receivedMessage.Value.PopReceipt);
-            }
-
-            return message;
-        }
-
         public async Task UpdateMessageAsync(QueueMessage message)
         {
             var receivedMessage = await queueClient.ReceiveMessageAsync();
