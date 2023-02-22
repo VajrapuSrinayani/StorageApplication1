@@ -41,13 +41,13 @@ namespace StorageApplication.Controllers
             return Ok(message);
         }
 
-        [HttpGet]
+        [HttpGet("DequeueMessage")]
         public async Task<QueueMessage> DequeueMessage()
         {
             return await queueRepository.DequeueMessageAsync();
         }
 
-        [HttpPut]
+        [HttpPut("UpdateMessage")]
         public async Task UpdateMessage(QueueMessage message)
         {
             await queueRepository.UpdateMessageAsync(message);
