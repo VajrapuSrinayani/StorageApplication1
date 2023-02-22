@@ -52,7 +52,7 @@ namespace StorageApplication.Controllers
         //    return NoContent();
         //}
 
-        [HttpDelete("Delete/{blobfileName}")]
+        [HttpDelete("DeleteByName")]
         public async Task<IActionResult> DeleteAsync(string blobfileName)
         {
             await _repository.DeleteFileAsync(blobfileName);
