@@ -48,10 +48,10 @@ namespace StorageApplication.Controllers
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> DeleteAsync([FromQuery] string category, string id)
+        public async Task<string> DeleteAsync([FromQuery] string category, string id)
         {
-            await _storageService.DeleteEntityAsync(category, id);
-            return NoContent();
+            var result = await _storageService.DeleteEntityAsync(category, id);
+            return result;
         }
     }
 }

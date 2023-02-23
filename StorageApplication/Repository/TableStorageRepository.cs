@@ -48,10 +48,11 @@ namespace StorageApplication.Repository
             await tableClient.UpsertEntityAsync(entity);
             return entity;
         }
-        public async Task DeleteEntityAsync(string category, string id)
+        public async Task<string> DeleteEntityAsync(string category, string id)
         {
             var tableClient = await GetTableClient();
             await tableClient.DeleteEntityAsync(category, id);
+            return "Deleted the item from the Table";
         }
     }
 }

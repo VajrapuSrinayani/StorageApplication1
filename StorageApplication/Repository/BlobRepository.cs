@@ -9,9 +9,6 @@ namespace StorageApplication.Repository
     {
         private readonly CloudBlobContainer _container;
 
-        //public static string connectionString = "DefaultEndpointsProtocol=https;AccountName=charithastorage;AccountKey=sSXAoJNijEEyDePuazR02nj7z9Krca8LKtcxI49pIPL8o0NZOB5DyStVhqr7FL8g+4suwRz4EHSi+AStBH1JbQ==;EndpointSuffix=core.windows.net";
-        //public static string containerName = "blob";
-
         public BlobRepository(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("StorageConnectionString");
@@ -52,16 +49,11 @@ namespace StorageApplication.Repository
             };
         }
 
-        //public async Task UpdateBlobAsync(Stream stream, string blobName)
-        //{
-        //    var blob = _container.GetBlockBlobReference(blobName);
-        //    await blob.UploadFromStreamAsync(stream);
-        //}
-
-        public async Task DeleteFileAsync(string blobfileName)
+        public async Task<string> DeleteFileAsync(string blobfileName)
         {
             var blob = _container.GetBlockBlobReference(blobfileName);
             await blob.DeleteAsync();
+            return $"Deleted the blob file named {blobfileName}"; 
         }
     }
 }

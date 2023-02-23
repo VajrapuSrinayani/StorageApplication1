@@ -7,6 +7,6 @@ namespace StorageApplication.Interface
         Task<TableEntity> GetEntityAsync(string category, string id);
         Task<TableEntity> AddEntityAsync(TableEntity entity);
         Task<TableEntity> UpsertEntityAsync(TableEntity entity);
-        Task DeleteEntityAsync(string category, string id);
+        Task<string> DeleteEntityAsync(string category, string id);
     }
 }

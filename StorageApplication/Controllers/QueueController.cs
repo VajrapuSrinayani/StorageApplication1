@@ -24,10 +24,10 @@ namespace StorageApplication.Controllers
         //}
 
         [HttpPost("AddMessage")]
-        public async Task<IActionResult> AddMessage(QueueMessage message)
+        public async Task<string> AddMessage(QueueMessage message)
         {
-            await queueRepository.AddMessageAsync(message);
-            return Ok();
+            var result = await queueRepository.AddMessageAsync(message);
+            return result;
         }
 
         [HttpGet("GetMessage")]
@@ -48,16 +48,17 @@ namespace StorageApplication.Controllers
         }
 
         [HttpPut("UpdateMessage")]
-        public async Task UpdateMessage(QueueMessage message)
+        public async Task<string> UpdateMessage(QueueMessage message)
         {
-            await queueRepository.UpdateMessageAsync(message);
+            var result = await queueRepository.UpdateMessageAsync(message);
+            return result;
         }
 
         [HttpDelete("DeleteMessages")]
-        public async Task<IActionResult> DeleteMessage()
+        public async Task<string> DeleteMessage()
         {
-            await queueRepository.DeleteMessagesAsync();
-            return Ok();
+            var result = await queueRepository.DeleteMessagesAsync();
+            return result;
         }
 
         //[HttpDelete("DeleteQueue")]
