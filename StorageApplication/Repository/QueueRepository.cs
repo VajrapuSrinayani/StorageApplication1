@@ -41,7 +41,7 @@ namespace StorageApplication.Repository
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return "Message is not added into the queue";
+                return "Message is not added to the queue";
             }
         }
 
@@ -82,13 +82,13 @@ namespace StorageApplication.Repository
                 var messageBody = JsonConvert.SerializeObject(updatedMessage);
                 await queueClient.UpdateMessageAsync(receivedMessage.Value.MessageId, receivedMessage.Value.PopReceipt, messageBody, TimeSpan.Zero);
             }
-            return "Updated the message into the queue";
+            return "Updated the message to the queue";
         }
 
         public async Task<string> DeleteMessagesAsync()
         {
             await queueClient.ClearMessagesAsync();
-            return "Deleted all the message in the queue";
+            return "Deleted all the messages in the queue";
         }
 
         //public async Task DeleteQueueAsync()
